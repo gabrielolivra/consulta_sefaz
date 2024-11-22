@@ -27,14 +27,14 @@ def consultaSefaz(codigo_cliente):
         
         
         if not enderecohtml or len(enderecohtml) < 2:
-            return jsonify({"situacao": "Cliente não encontrado"}), 404
+            return jsonify({"situacao": "CLIENTE NAO ENCONTRADO"}), 404
         
         inf_comp = enderecohtml[1].contents[1].text
         infcomp_org = inf_comp.split('\n')
         
        
         if len(infcomp_org) < 21:
-            return jsonify({"error": "Dados insuficientes"}), 404
+            return jsonify({"error": "DADOS INSUFICIENTES"}), 404
         
         situacao = infcomp_org[20]
         
