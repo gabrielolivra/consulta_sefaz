@@ -8,6 +8,7 @@ app = Flask(__name__)
 @app.route("/consulta/<codigo_cliente>", methods=['GET'])
 
 
+
 def consultaSefaz(codigo_cliente):
 
     try:
