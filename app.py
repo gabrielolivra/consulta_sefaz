@@ -13,7 +13,7 @@ def consultaSefaz(codigo_cliente):
 
     try:
         cabecalho = {"User-Agent": "Opera"}
-        url = f"https://internet-consultapublica.apps.sefaz.ce.gov.br/sintegra/consultar?tipdocumento=2&numcnpjcgf={codigo_cliente}"
+        url = f"https://consultapublica.sefaz.ce.gov.br/sintegra/consultar?tipdocumento=2&numcnpjcgf={codigo_cliente}"
         
         cnpj_req = requests.get(
             url, 
