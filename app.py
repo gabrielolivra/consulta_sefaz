@@ -33,7 +33,7 @@ def consultaSefaz(codigo_cliente):
         return jsonify({"situacao": situacao})
     
     except requests.exceptions.RequestException as e:
-        return jsonify({"situacao": ''})
+        return jsonify({"situacao": 'Nao cadastrado'})
         
 
 if __name__ == '__main__':
