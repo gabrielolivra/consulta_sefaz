@@ -10,7 +10,6 @@ CORS(app)
 
 
 def consultaSefaz(codigo_cliente):
-
     try:
         cabecalho = {"User-Agent": "Opera"}
         url = f"https://consultapublica.sefaz.ce.gov.br/sintegra/consultar?tipdocumento=2&numcnpjcgf={codigo_cliente}"
@@ -26,14 +25,27 @@ def consultaSefaz(codigo_cliente):
         soup = BeautifulSoup(cnpj_req.text, "html.parser")
         enderecohtml = soup.find_all('table', {'id': 'enderecosintegara'})
         
+        
+        if not enderecohtml or len(enderecohtml) < 2:
+            return jsonify({"situacao": "Cliente não encontrado"}), 404
+        
         inf_comp = enderecohtml[1].contents[1].text
         infcomp_org = inf_comp.split('\n')
+        
+       
+        if len(infcomp_org) < 21:
+            return jsonify({"error": "Dados insuficientes"}), 404
+        
         situacao = infcomp_org[20]
         
         return jsonify({"situacao": situacao})
     
     except requests.exceptions.RequestException as e:
-        return jsonify({"situacao": 'Nao cadastrado'})
+        return jsonify({"error": str(e)}), 500
+    except IndexError as e:
+        return jsonify({"error": "Erro ao processar dados"}), 500
+    except Exception as e:
+        return jsonify({"error": "Erro desconhecido"}), 5000
         
 
 if __name__ == '__main__':
