@@ -33,8 +33,8 @@ def consultaSefaz(codigo_cliente):
         return jsonify({"situacao": situacao})
     
     except requests.exceptions.RequestException as e:
-        return jsonify({"error": str(e)}), 500
-
+        return jsonify({"situacao": ''})
+        
 
 if __name__ == '__main__':
     app.run(debug=True, port=3002)
