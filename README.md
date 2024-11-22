@@ -32,7 +32,7 @@ curl https://consulta-sefaz.onrender.com/consulta/00066559700193
 #### Erro (404 Not Found)
 ```json
 {
-    "error": "Estrutura HTML não encontrada"
+    "error": "CLIENTE NAO ENCONTRADO"
 }
 ```
 
