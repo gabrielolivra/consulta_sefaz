@@ -2,9 +2,9 @@ from bs4 import BeautifulSoup
 import requests
 from flask import Flask, jsonify
 import re
-
+from flask_cors import CORS
 app = Flask(__name__)
-
+CORS(app)
 @app.route("/consulta/<codigo_cliente>", methods=['GET'])
 
 
